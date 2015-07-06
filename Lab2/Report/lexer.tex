@@ -1,0 +1,26 @@
+\section{Построение лексического анализатора}
+
+В нашей грамматике четыре терминала: «n» (имя), «*», «,»  и «;». Не забудем также про конец строки.
+
+\begin{verbatim}
+enum token_t
+{
+  NAME, ASTERISK, COMMA, SEMICOLON, END
+};
+\end{verbatim}
+
+\begin{tabular}{| l | c |}
+    \hline
+    \textbf{Терминал} & \textbf{Токен} \\
+    \hline
+    n & \verb+NAME+ \\
+    \hline
+    * & \verb+ASTERISK+ \\
+    \hline
+    , & \verb+COMMA+ \\
+    \hline
+    ; & \verb+SEMICOLON+ \\
+    \hline
+    \$ & \verb+END+ \\
+    \hline
+\end{tabular}

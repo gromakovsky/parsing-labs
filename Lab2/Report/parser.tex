@@ -1,0 +1,35 @@
+\section{Построение синтаксического анализатора}
+
+Построим множества FIRST и FOLLOW для нетерминалов.
+
+\begin{tabular}{| l | l | l |}
+    \hline
+    \textbf{Нетерминал} & \textbf{FIRST} & \textbf{FOLLOW} \\
+    \hline
+    $S$ & «n» & \$ \\
+    \hline
+    $S^{'}$ & «n», $\varepsilon$ & \$ \\
+    \hline
+    $V$ & «n», «*» & «,», «;» \\
+    \hline
+    $N$ & $\varepsilon$, «,» & «;» \\
+    \hline
+\end{tabular}
+\\
+Заведём структуру для хранения дерева.
+
+\begin{verbatim}
+   class node
+   {
+      std::string s;
+      std::vector<node *> children;
+   public:
+      node(const std::string & s);
+
+      void add_child(node * child);
+      void add_child(const std::string & s);
+      
+      std::vector<node *> get_children() const;
+      std::string get_name() const;
+   };
+\end{verbatim}

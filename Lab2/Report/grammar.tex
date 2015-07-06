@@ -1,0 +1,38 @@
+\section{Разработка грамматики}
+
+Описания переменных в Си. Сначала следует имя типа, затем разделенные запятой имена переменных. Переменная может быть указателем, в этом случае перед ней идет звездочка (возможны и указатели на указатели, и т. д.). Описаний может быть несколько.
+
+\subsection{Грамматика}
+
+\begin{center}
+    \begin{tabular}{ r c l }
+        $S$ & $\rightarrow$ & $\mathrm{n} VN\mathrm{;} S^{'}$ \\
+        $S^{'}$ & $\rightarrow$ & $S$ \\
+        $S^{'}$ & $\rightarrow$ & $\varepsilon$ \\
+        $V$ & $\rightarrow$ & $\mathrm{*} V$ \\
+        $V$ & $\rightarrow$ & $\mathrm{n}$ \\
+        $N$ & $\rightarrow$ & $\mathrm{,} VN$ \\
+        $N$ & $\rightarrow$ & $\varepsilon$ \\
+    \end{tabular}
+\end{center}
+
+\subsection{Описания нетерминалов}
+
+\begin{center}
+    \begin{tabular}{ | l | l | }
+        \hline
+        \textbf{Нетерминал} & \textbf{Описание} \\
+        \hline
+        $S$ & Первое описание переменных. \\
+        \hline
+        $S^{'}$ & Следующее описание. \\
+        \hline
+        $V$ & Описание одной переменной. \\
+        \hline
+        $N$ & Описание следующей переменной. \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Удаление левой рекурсии и правого ветвления}
+В получившейся грамматике нет ни левой рекурсии, ни правого ветвления.
