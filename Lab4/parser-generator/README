@@ -1,0 +1,15 @@
+Very simple parser generator.
+
+To build run:
+cd grammar_reader
+make
+cd ..
+qmake
+make
+
+This generator will create a file named `parser-name`.hpp, containing parser template. This class contains one public function: start_parsing(). You should provide a context (it's type is a template parameter) and iterator (that implements lexical_iterator interface) for it. There are some helper files that should placed in the same directory (see helper-files folder):
+errors.h: contains definitions off errors
+lexical_iterator.h: defines lexical_iterator interface
+user_types.h: all information about types that are used in grammar must be available from this file. Actually, you can put literally anything in this file, it will be simply included in result file
+
+Take a look at example directory for a sample grammar file and output of generator.
