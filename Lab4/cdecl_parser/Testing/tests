@@ -1,0 +1,24 @@
+int counter;
+GOOD
+int counter
+BAD
+, counter;
+BAD
+char @ c;
+BAD
+int ** a, * b, o__0, **** a1; void * buf; size_t a_a_a;
+GOOD
+size_t counter;
+GOOD
+int 9thousands;
+BAD
+line2 counter2;
+GOOD
+size_t counter, index_of_string;
+GOOD
+char * buf, ** point_to_str, cur_char;
+GOOD
+void buf *;
+BAD
+char * c;
+GOOD

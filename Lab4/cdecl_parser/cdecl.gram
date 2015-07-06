@@ -1,0 +1,38 @@
+// Lines starting with // are ignored
+// Empty lines are delimiters for blocks
+// First block:
+// Token ids (0 is reserved for END):
+IDENTIFIER  1
+SEMICOLON   2
+ASTERISK    3
+COMMA       4
+
+// Second block:
+// Types for non-terminals (each terminal has type std::string for simplicity):
+// Types with namespaces are supported. Pointers are supported too, but asterisks must be right after type name (no spaces allowed)
+%type node_ptr start
+%type node_ptr var
+%type node_ptr next
+%type node_ptr another
+
+// Third block
+// Grammar:
+// I hope it's easy enough to understand syntax
+start ::= IDENTIFIER var next SEMICOLON another
+{ ctx.construct(result_, "start", {value0_, value1_, value2_, value3_, value4_}); ctx.root_ = result_; }
+
+var ::= ASTERISK var
+{ ctx.construct(result_, "var", {value0_, value1_}); }
+
+var ::= IDENTIFIER
+{ ctx.construct(result_, "var", {value0_}); }
+
+next ::= COMMA var next 
+{ ctx.construct(result_, "next", {value0_, value1_, value2_}); }
+
+next ::= { ctx.construct(result_, "next", {}); }
+
+another ::= start
+{ ctx.construct(result_, "another", {value0_}); }
+
+another ::= { ctx.construct(result_, "another", {}); }
